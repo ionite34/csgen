@@ -11,13 +11,13 @@ from csgen.cs_access_modifiers import ClassModifier, PropertyModifier
 class BaseCSharpCodeGenerator(ABC):
     _stream: TextIOBase
 
-    def __init__(self, io: TextIOBase | None = None, newline: str | None = None, generator_name: str | None = None, spaces_per_indent: int | None = None):
+    def __init__(self, io: TextIOBase | None = None, newline: str = "\n", generator_name: str | None = None, spaces_per_indent: int | None = None):
         super().__init__()
         self.generator_name = type(self).__qualname__
         self.spaces_per_indent = 4
         self.indent_level = 0
 
-        self._newline = newline or ("\r\n" if os.name == "nt" else "\n")
+        self._newline = newline
         self._stream = io or StringIO()
 
     @contextmanager
