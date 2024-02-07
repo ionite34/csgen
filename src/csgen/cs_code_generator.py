@@ -134,7 +134,7 @@ class BaseCSharpCodeGenerator(ABC):
 
 
 class CSharpCodeGenerator(BaseCSharpCodeGenerator):
-    def __init__(self, io: TextIOBase | None = None, newline: str | None = None):
+    def __init__(self, io: TextIOBase | None = None, newline: str = "\n", generator_name: str | None = None, spaces_per_indent: int | None = None):
         super().__init__(io, newline)
 
         self.default_class_attributes = [
